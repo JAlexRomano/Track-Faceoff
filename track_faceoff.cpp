@@ -65,11 +65,10 @@ string compareSongs(string song1, string song2, vector<string>& check_duplicate)
 	else return song2;
 }
 
-vector<string> round(vector<string>& current_round, vector<string>& losers_bracket, vector<string>& check_duplicate) {
+vector<string> oneRound(vector<string>& current_round, vector<string>& losers_bracket, vector<string>& check_duplicate) {
 	vector<string> next_round;
 
 	if (current_round.size() % 2 == 1) {
-		//cout << current_round.back() << " gets a bye." << endl;
 		next_round.push_back(current_round.back());
 		current_round.pop_back();
 	}
@@ -94,7 +93,7 @@ void tournament(vector<string> all_songs, vector<string>&rankings /*songs in ord
 			rankings.push_back(current_round[0]);
 			break;
 		}
-		current_round = round(current_round, losers_bracket, check_duplicate);
+		current_round = oneRound(current_round, losers_bracket, check_duplicate);
 		if (current_round.size() == 1) {
 			rankings.push_back(current_round[0]);
 			current_round = losers_bracket;
