@@ -26,4 +26,4 @@ obj/main.o: src/main.cpp include/track_faceoff.hpp
 # Executables
 
 bin/track_faceoff: obj/main.o obj/track_faceoff.o
-	g++ $(CFLAGS) -o bin/main obj/main.o obj/track_faceoff.o
+	g++ $(CFLAGS) -o bin/track_faceoff obj/main.o obj/track_faceoff.o

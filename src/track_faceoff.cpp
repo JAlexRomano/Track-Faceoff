@@ -109,6 +109,7 @@ void TrackFaceoff::Tournament() {
 
 void TrackFaceoff::Print() {
 	size_t i;
+	string answer;
 
         GetSongs();
         Tournament();
@@ -116,5 +117,21 @@ void TrackFaceoff::Print() {
         cout << "\nYour final rankings good sir: " << endl;
         for (i = 0; i < rankings.size(); i++) {
                 cout << i + 1 << ". " << rankings[i] << endl;
+        }
+
+	cout << "Would you like to write these results to a text file?(y/n) ";
+        cin >> answer;
+        if (answer == "y") {
+                ofstream fout;
+                fout.open("ranking_results.txt");
+                if (fout.fail()) {
+                        cerr << "File failed to open for writing" << endl;
+                        exit(1);
+                }
+                for (size_t i = 0; i < rankings.size(); ++i) {
+                        fout << i + 1 << ". " << rankings[i] << endl;
+                }
+
+                fout.close();
         }
 }
