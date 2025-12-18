@@ -19,8 +19,11 @@ clean:
 obj/track_faceoff.o: src/track_faceoff.cpp include/track_faceoff.hpp
 	g++ $(CFLAGS) -c -o obj/track_faceoff.o src/track_faceoff.cpp
 
+obj/main.o: src/main.cpp include/track_faceoff.hpp
+	g++ $(CFLAGS) -c -o obj/main.o src/main.cpp
+
 # -------------------------
 # Executables
 
-bin/track_faceoff: obj/track_faceoff.o
-	g++ $(CFLAGS) -o bin/track_faceoff obj/track_faceoff.o
+bin/track_faceoff: obj/main.o obj/track_faceoff.o
+	g++ $(CFLAGS) -o bin/main obj/main.o obj/track_faceoff.o

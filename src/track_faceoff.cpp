@@ -1,5 +1,3 @@
-// Test commit
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -7,7 +5,7 @@
 #include <fstream>
 using namespace std;
 
-void getSongs(vector<string>& all_songs) {
+void GetSongs(vector <string> &all_songs) {
 	int song_value = 1;
 	cout << "Enter your songs here. Enter at least one song and type '#done'" << endl;
 	cout << "without the '' when you're done inputing songs." << endl;
@@ -27,7 +25,7 @@ void getSongs(vector<string>& all_songs) {
 	}
 }
 
-string checkDuplicate(string a, string b, vector<string> check_duplicate) {
+string CheckDuplicate(const string &a, const string &b, vector<string> check_duplicate) {
 	if (check_duplicate.size() < 4) return "no duplicate";
 	for (size_t i = 0; i < check_duplicate.size() - 1 ; i += 2) {
 		if ((a == check_duplicate[i] && b == check_duplicate[i + 1]) || 
@@ -38,8 +36,8 @@ string checkDuplicate(string a, string b, vector<string> check_duplicate) {
 	return "no duplicate";
 }
 
-string compareSongs(string song1, string song2, vector<string>& check_duplicate) {
-	string duplicate = checkDuplicate(song1, song2, check_duplicate);
+string CompareSongs(const string &song1, const string &song2, vector<string>& check_duplicate) {
+	string duplicate = CheckDuplicate(song1, song2, check_duplicate);
 	if (duplicate != "no duplicate") return duplicate;
 	int choice;
 	while(true) {
@@ -67,7 +65,7 @@ string compareSongs(string song1, string song2, vector<string>& check_duplicate)
 	else return song2;
 }
 
-vector<string> oneRound(vector<string>& current_round, vector<string>& losers_bracket, vector<string>& check_duplicate) {
+vector <string> OneRound(vector<string>& current_round, vector<string>& losers_bracket, vector<string>& check_duplicate) {
 	vector<string> next_round;
 
 	if (current_round.size() % 2 == 1) {
@@ -75,7 +73,7 @@ vector<string> oneRound(vector<string>& current_round, vector<string>& losers_br
 		current_round.pop_back();
 	}
 	for (size_t i = 0; i < current_round.size() - 1; i+=2) {
-		string winner = compareSongs(current_round[i], current_round[i + 1], check_duplicate);
+		string winner = CompareSongs(current_round[i], current_round[i + 1], check_duplicate);
 		string loser;
 		if (winner == current_round[i]) loser = current_round[i + 1];
 		else loser = current_round[i];
@@ -85,7 +83,7 @@ vector<string> oneRound(vector<string>& current_round, vector<string>& losers_br
 	return next_round;
 }
 
-void tournament(vector<string> all_songs, vector<string>&rankings /*songs in order*/) {
+void Tournament(vector<string> all_songs, vector<string>&rankings /*songs in order*/) {
 	vector<string> current_round = all_songs;
 	vector<string> losers_bracket;
 	vector<string> check_duplicate;
@@ -95,7 +93,7 @@ void tournament(vector<string> all_songs, vector<string>&rankings /*songs in ord
 			rankings.push_back(current_round[0]);
 			break;
 		}
-		current_round = oneRound(current_round, losers_bracket, check_duplicate);
+		current_round = OneRound(current_round, losers_bracket, check_duplicate);
 		if (current_round.size() == 1) {
 			rankings.push_back(current_round[0]);
 			current_round = losers_bracket;
@@ -106,10 +104,10 @@ void tournament(vector<string> all_songs, vector<string>&rankings /*songs in ord
 
 int main() {
 	vector<string> songs;
-	getSongs(songs);
+	GetSongs(songs);
 
 	vector<string> final_rankings;
-	tournament(songs, final_rankings);
+	Tournament(songs, final_rankings);
 
 	cout << "\nYour final rankings good sir: " << endl;
 	for (size_t i = 0; i < final_rankings.size(); ++i) {
