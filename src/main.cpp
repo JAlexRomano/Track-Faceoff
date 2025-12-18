@@ -1,10 +1,11 @@
 #include "track_faceoff.hpp"
-using namespace std;
 
 int main() 
 {
 	TrackFaceoff tf;
 
+	tf.GetSongs();
+        tf.Tournament();
 	tf.Print();
 
 	return 0;

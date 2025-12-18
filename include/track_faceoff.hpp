@@ -8,7 +8,7 @@ class TrackFaceoff {
 		std::string CompareSongs(const std::string &song1, const std::string &song2);
 		std::vector <std::string> OneRound();
 		void Tournament();
-		void Print();
+		void Print() const;
 
 	protected:
 		std::vector <std::string> all_songs;

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <limits>
 #include <fstream>
+#include <limits>
 #include "track_faceoff.hpp"
 using namespace std;
 
@@ -107,12 +107,10 @@ void TrackFaceoff::Tournament() {
 	}
 }
 
-void TrackFaceoff::Print() {
+void TrackFaceoff::Print() const {
 	size_t i;
 	string answer;
-
-        GetSongs();
-        Tournament();
+        ofstream fout;
 
         cout << "\nYour final rankings good sir: " << endl;
         for (i = 0; i < rankings.size(); i++) {
@@ -122,16 +120,14 @@ void TrackFaceoff::Print() {
 	cout << "Would you like to write these results to a text file?(y/n) ";
         cin >> answer;
         if (answer == "y") {
-                ofstream fout;
                 fout.open("ranking_results.txt");
                 if (fout.fail()) {
                         cerr << "File failed to open for writing" << endl;
                         exit(1);
                 }
-                for (size_t i = 0; i < rankings.size(); ++i) {
+                for (i = 0; i < rankings.size(); i++) {
                         fout << i + 1 << ". " << rankings[i] << endl;
                 }
-
-                fout.close();
+        	fout.close();
         }
 }
