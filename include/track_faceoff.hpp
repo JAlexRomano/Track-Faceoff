@@ -6,8 +6,9 @@ class TrackFaceoff {
 		void GetSongs();
 		std::string CheckDuplicate(const std::string &a, const std::string &b);
 		std::string CompareSongs(const std::string &song1, const std::string &song2);
-		vector <std::string> OneRound();
+		std::vector <std::string> OneRound();
 		void Tournament();
+		void Print();
 
 	protected:
 		std::vector <std::string> all_songs;
