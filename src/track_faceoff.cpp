@@ -6,26 +6,8 @@
 #include "track_faceoff.hpp"
 using namespace std;
 
-void TrackFaceoff::GetSongs() {
-	string input;
-	int song_value;
-
-	song_value = 1;
-	cout << "Enter your songs here. Enter at least one song and type '#done'" << endl;
-	cout << "without the '' when you're done inputing songs." << endl;
-	cout << "Type '#delete' without the '' to delete your most recent input." << endl;
-	while(true) {
-		cout << "Enter song #" << song_value << ": ";
-		getline(cin, input);
-		if (input == "#done") break;
-		if (input == "#delete") {
-			all_songs.pop_back();
-			song_value--;
-			continue;
-		}
-		all_songs.push_back(input);
-		song_value++;
-	}
+void TrackFaceoff::GetSongs(vector <string> &songs) {
+	all_songs = songs;
 }
 
 string TrackFaceoff::CheckDuplicate(const string &a, const string &b) {
@@ -56,11 +38,11 @@ string TrackFaceoff::CompareSongs(const string &song1, const string &song2) {
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "\nBruh...you know that aint what I asked. Try again" << endl;
+			cout << "\nInvalid input. You can only enter numbers" << endl;
 			continue;
 		}
 		if (choice == 1 || choice == 2) break;
-		else cout << "Bruh...you know that aint what I asked" << endl;
+		else cout << "\nInvalid selection. There are only two options" << endl;
 	}
 	if (choice == 1) {
 		check_duplicate.push_back(song1);
