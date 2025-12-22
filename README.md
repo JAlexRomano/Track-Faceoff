@@ -2,9 +2,11 @@
 Console-based C++ program for ranking your favorite songs using head-to-head face-offs
 
 ## 🎵 What it is  
-Track-Faceoff is a simple C++ console application that allows you to input a list of songs and then repeatedly choose between two songs in a “face-off” format, ultimately ranking your full list from best to worst based on your binary choices.
+Track-Faceoff is a C++ console application that allows you to input a list of songs and then repeatedly choose between two songs in a “face-off” format, ultimately ranking your full list from best to worst based on your binary choices.
 
 ## 🚀 Features  
+- Use the 'make' command to compile if on a unix-based OS. Otherwise, run the Windows exe in bin
+    - Note: running 'make' will delete the windows exe
 - Input your songs with a text file (via command line argument)
 - The program randomly selects pairs of songs for you to choose your preferred one
 - After enough comparisons, it outputs a full ranking from 1st place to last place
