@@ -94,7 +94,7 @@ void TrackFaceoff::Print() const {
 	string answer;
         ofstream fout;
 
-        cout << "\nYour final rankings good sir: " << endl;
+        cout << "\nYour final rankings: " << endl;
         for (i = 0; i < rankings.size(); i++) {
                 cout << i + 1 << ". " << rankings[i] << endl;
         }

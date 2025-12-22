@@ -1,4 +1,5 @@
 CFLAGS ?= -std=c++11 -Wall -Wextra -Iinclude
+$(shell mkdir -p obj bin)
 
 # -------------------------
 # This means that when you just type "make", you make all of the executables

@@ -6,7 +6,6 @@ Track-Faceoff is a C++ console application that allows you to input a list of so
 
 ## 🚀 Features  
 - Use the 'make' command to compile if on a unix-based OS. Otherwise, run the Windows exe in bin
-    - Note: running 'make' will delete the windows exe
 - Input your songs with a text file (via command line argument)
 - The program randomly selects pairs of songs for you to choose your preferred one
 - After enough comparisons, it outputs a full ranking from 1st place to last place
